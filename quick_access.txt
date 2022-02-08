@@ -1,0 +1,26 @@
+         dec    dx
+          dec    dx
+          mov    ax,2
+          mov    cx,dx
+          inc    dx
+          inc    dx
+          or     cx, cx
+    met:  
+          div    dx
+          or     ah,ah
+          jz     exit1
+          inc    ax
+          cmp    ax, dx
+          jz     exit2
+          loop   met
+    exit1:
+          mov    ah,9
+          mov    dx,offset no
+          int    21h
+          jmp    exit
+    exit2:
+          mov    ah,9
+          mov    dx,offset yes
+          int    21h
+          jmp    exit
+    exit:
